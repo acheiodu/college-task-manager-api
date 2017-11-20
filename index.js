@@ -1,134 +1,25 @@
-let express = require('express')
 let bodyParser = require('body-parser')
+let express = require('express')
 let mongoose = require('mongoose')
 
-let app = express()
+let assignmentController = require('./controllers/assignment.server.controller')
 
-mongoose.connect('mongodb://user:1234@ds151963.mlab.com:51963/mongohost', { useMongoClient: true });
+mongoose.connect('mongodb://user:1234@ds151963.mlab.com:51963/mongohost', {useMongoClient: true});
 mongoose.Promise = global.Promise;
 
+let app = express()
 app.use(bodyParser.json())
-
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
-app.post('/api/save', (req, res) => {
-  let Assignment = mongoose.model('Assignment', {type: String, subject: String})
-  let assignment = new Assignment({type: 'Prova', subject: 'Inteligência Artificial'})
-  assignment.save((err, data) => {
-    if (err) {
-      res.send(err)
-    } else {
-      res.send(data)
-    }
-  })
-})
+app.route('/api')
+  .get((req, res) => res.send('College Task Manager API'))
 
-app.get('/api/assignments', (req, res) => {
-  let assignments = [
-    {
-      type: 'Prova',
-      subject: 'Inteligência Artificial',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Tarefa',
-      subject: 'Inteligência Artificial',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'K-fold Cross Validation',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Atividade',
-      subject: 'Compiladores',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Atividade do Edmodo.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Atividade',
-      subject: 'Compiladores',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Criar um modelo de machine learning com base em algum dataset do site UCI.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Prova',
-      subject: 'Compiladores',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'K-fold Cross Validation',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Tarefa',
-      subject: 'Computação Paralela',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Criar um modelo de machine learning com base em algum dataset do site UCI.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Prova',
-      subject: 'EAD - Antropologia',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'K-fold Cross Validation',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Atividade',
-      subject: 'EAD - Antropologia',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Prova',
-      subject: 'EAD - Antropologia',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'K-fold Cross Validation',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Atividade',
-      subject: 'EAD - Sociologia',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI. Criar um modelo de machine learning com base em algum dataset do site UCI.',
-      status: 'Pendente',
-      grade: 0
-    },
-    {
-      type: 'Prova',
-      subject: 'EAD - Sociologia',
-      requestDate: new Date(),
-      dueDate: new Date(),
-      description: 'K-fold Cross Validation',
-      status: 'Pendente',
-      grade: 0
-    }
-  ]
-  res.send(assignments)
-})
+app.route('/api/assignment')
+  .get((req, res) => assignmentController.find(req, res))
+  .post((req, res) => assignmentController.save(req, res))
 
 app.listen(3000, () => console.log('Serving on port 3000...'))
