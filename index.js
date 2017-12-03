@@ -4,7 +4,7 @@ let mongoose = require('mongoose')
 
 let assignmentController = require('./controllers/assignment.server.controller')
 
-mongoose.connect('mongodb://user:1234@ds151963.mlab.com:51963/mongohost', {useMongoClient: true});
+mongoose.connect('mongodb://college-task-manager-admin:1234@ds129166.mlab.com:29166/college-task-manager-db', {useMongoClient: true});
 mongoose.Promise = global.Promise;
 
 let app = express()
@@ -15,11 +15,11 @@ app.use((req, res, next) => {
   next()
 })
 
-app.route('/api')
-  .get((req, res) => res.send('College Task Manager API'))
+app.route('/')
+  .get((req, res) => res.send('College Task Manager'))
 
-app.route('/api/assignment')
+app.route('/assignments')
   .get((req, res) => assignmentController.find(req, res))
   .post((req, res) => assignmentController.save(req, res))
 
-app.listen(3000, () => console.log('Serving on port 3000...'))
+let server = app.listen(process.env.PORT || 8080, () => console.log(`Serving on port ${server.address().port}...`))
