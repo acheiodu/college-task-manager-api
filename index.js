@@ -1,25 +1,34 @@
-let bodyParser = require('body-parser')
-let express = require('express')
-let mongoose = require('mongoose')
+// Imports the Google Cloud client library
+const Datastore = require('@google-cloud/datastore');
 
-let assignmentController = require('./controllers/assignment.server.controller')
+// Your Google Cloud Platform project ID
+const projectId = 'college-task-manager';
 
-mongoose.connect('mongodb://college-task-manager-admin:1234@ds129166.mlab.com:29166/college-task-manager-db', {useMongoClient: true});
-mongoose.Promise = global.Promise;
+// Instantiates a client
+const datastore = Datastore({
+  projectId: projectId
+});
 
-let app = express()
-app.use(bodyParser.json())
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
+// The kind for the new entity
+const kind = 'Task';
+// The name/ID for the new entity
+const name = 'sampletask1';
+// The Cloud Datastore key for the new entity
+const taskKey = datastore.key([kind, name]);
 
-app.route('/')
-  .get((req, res) => res.send('College Task Manager'))
+// Prepares the new entity
+const task = {
+  key: taskKey,
+  data: {
+    description: 'Buy milk'
+  }
+};
 
-app.route('/assignments')
-  .get((req, res) => assignmentController.find(req, res))
-  .post((req, res) => assignmentController.save(req, res))
-
-let server = app.listen(process.env.PORT || 8080, () => console.log(`Serving on port ${server.address().port}...`))
+// Saves the entity
+datastore.save(task)
+  .then(() => {
+    console.log(`Saved ${task.key.name}: ${task.data.description}`);
+  })
+  .catch((err) => {
+    console.error('ERROR:', err);
+  });

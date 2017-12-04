@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "college-task-manager",
+  "private_key_id": "91621a1b23699cc4915e9f8513e6c57082d0adff",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCaZi/0rZgrtrOa\nk+J3/6Jy9UWb7i5y1btgKQk8yGaiITw+Vt5H5nbXWlOPxRdHhd0FkXvaXpI/1y7k\n2Wsk93hr3yYcyzysgLnXdKesU+yYio9wo7yrzH/+O8URDRmA+K0VPrPLCaZoAyLf\ntZlxcfw040GIyWxvUAOngNODpSxUStEfmZdCnU1hjbK/XtHLDaCDTSHwBZyPdyRq\ngHS2Ja/mr81+fI5TrlNo3yI2t0lZ7KEcWgzh1lUfF2h0DacXLCg+wOC0ftxym7Wt\nagI0rdtEdcUqFV/2NybCMvJ5Lq16Iqcdw57yjM5TNntMMksjhYuawd+tVSv6p9KE\n44ZRgemNAgMBAAECggEAAai99K7l3vhiYzOaICh81ifpFNUhJiZCUnT2brMHmU/q\nng/gaRzio4tKsRWQ27mmR6BJ2K2h/DIjhJ2Kf3XyUxRtjCsp7n+en6BXCezH8taw\nVmlIBn+W04RQaI+/ualScNNA6tpicaUw+37v1G6BY48ane3uLp8JPwRNIZHFkW1N\nHaVZ6xYDy++nK6LerBnev5Rd0E9AiGLWiYYjcn6djvqybjvcqtFv84Ie+r8vHZjx\nHIwENZwBKqO9MCEzM4tx+e7pFxiVQUL0NUQskA9WvcFqfoJ38mXox9NH7jspmx6b\nJt4dX79FBhoGLy8k8foHtLLBHN3jk8gaWkTDDH8UCQKBgQDPdriwyna3Uyc+uDoW\n2Gh5Yt/eaEkhu9+n6PWS+Ow5HM/qyQWYeVoLiiIZsFYEVSSQnn6GydmpUL9yBkkr\nftcJye0Wj6koSuT9Wuyd8jw5z8pwkBQ+mupVUeXXhBErpoFFyNwKV31PuL7v1GtJ\nsiD+HZd5OMHAldBj3eJdBxfEpQKBgQC+hVuPheW+Jpd862lSLW1RfloJZVxjsY9V\n17iDLcxNOTJX9w/xJxUGARBH6gMr1Zh1u4QwWeLDBKGisCX203ClomXR9Ph5DQLL\ngg+ssbZ/KS8xXk/Yblh57g1mBHCJctxCtzowyEPU+7AOnkfSamd8Ou5O9xMH6aNP\nnoLorJs0yQKBgQCLGKpTvitCVrolTxeDYa0KVcSLNZhyyaf2yDZ+R+75i9vLKuRZ\nimNZAVBDsPq7BOrzG5DxhjwtTTpOlPBR/UToBz6ytbdQkIZfZ6rlaxf+Gtc8CR3J\nq8wZUEOt75ojjgt2YmlFdctKvC8oVV9plciRF/4LBIbDPK7vhkDS5oKFEQKBgDPF\np3Dj8N9wO0A99HvZTliT3kGpYqbQrGOmYER9YIQno8+VmqZseWENTvBL3hq+S1TK\n5QwCkQVvr8C230oogPbxn3ujdxXl/DlzGXFTRYVemq1utIHa0n4nu0pasH4ZUVNr\n2QtCkHRDBL+kMV4zffWbSgD5URmYWsGbEHXL2c1JAoGAZaKt62aQti41MrZzM+pU\nWLVYO4A01OLQwnwQm0QLRhGkBcYltROYYdzKhUl/vsLXb65U7fSsh6mmw+irUkKk\netHyYSmbb9jew6EG2zHxkdLgF4NBg9e+Owfpn32ZNXmdI3ATmPfPjlwX684kj4JB\n+YoQlWKGnj4vFqZBrCkiDd8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "college-task-manager@appspot.gserviceaccount.com",
+  "client_id": "116554315353030709673",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/college-task-manager%40appspot.gserviceaccount.com"
+}
