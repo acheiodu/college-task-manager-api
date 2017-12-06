@@ -4,7 +4,7 @@ let mongoose = require('mongoose')
 
 let assignmentController = require('./controllers/assignment.server.controller')
 
-mongoose.connect('mongodb://college-task-manager-admin:1234@ds129166.mlab.com:29166/college-task-manager-db', {useMongoClient: true});
+mongoose.connect('mongodb://user:1234@ds151963.mlab.com:51963/mongohost', {useMongoClient: true}, (err) => console.log(err));
 mongoose.Promise = global.Promise;
 
 let app = express()
