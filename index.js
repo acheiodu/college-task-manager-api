@@ -19,11 +19,12 @@ app.use((req, res, next) => {
   next()
 })
 
-app.route('/')
-  .get((req, res) => res.send('College Task Manager'))
+app.get('/', (req, res) => res.redirect('/assignments'))
 
-app.route('/assignments')
-  .get((req, res) => assignmentController.find(req, res))
-  .post((req, res) => assignmentController.save(req, res))
+app.get('/assignments', (req, res) => assignmentController.find(req, res))
+
+app.post('/save/assignment', (req, res) => assignmentController.save(req, res))
+
+app.post('/remove/assignment', (req, res) => assignmentController.remove(req, res))
 
 let server = app.listen(process.env.PORT || 8080, () => console.log(`Serving on port ${server.address().port}...`))
