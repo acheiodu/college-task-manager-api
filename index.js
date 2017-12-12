@@ -23,8 +23,10 @@ app.get('/', (req, res) => res.redirect('/assignments'))
 
 app.get('/assignments', (req, res) => assignmentController.find(req, res))
 
-app.post('/save/assignment', (req, res) => assignmentController.save(req, res))
+app.post('/edit/assignment', (req, res) => assignmentController.edit(req, res))
 
 app.post('/remove/assignment', (req, res) => assignmentController.remove(req, res))
+
+app.post('/save/assignment', (req, res) => assignmentController.save(req, res))
 
 let server = app.listen(process.env.PORT || 8080, () => console.log(`Serving on port ${server.address().port}...`))
