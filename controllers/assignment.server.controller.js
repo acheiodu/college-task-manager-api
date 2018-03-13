@@ -15,7 +15,14 @@ exports.find = (req, res) => {
 		if (err) {
 			res.send(err.message)
 		} else {
-			res.send(assignments)
+			res.send(assignments.sort((assignment1, assignment2) => {
+				if (assignment1.dueDate > assignment2.dueDate)
+					return 1;
+				else if (assignment1.dueDate < assignment2.dueDate)
+					return -1;
+				else
+				 return 0;
+			}))
 		}
 	})
 }
