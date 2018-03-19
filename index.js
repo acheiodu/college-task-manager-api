@@ -29,4 +29,4 @@ app.post('/remove/assignment', (req, res) => assignmentController.remove(req, re
 
 app.post('/save/assignment', (req, res) => assignmentController.save(req, res))
 
-let server = app.listen(process.env.PORT || 8080, () => console.log(`Serving on port ${server.address().port}...`))
+let server = app.listen(process.env.PORT || 3000, () => console.log(`Serving on port ${server.address().port}...`))
