@@ -1,6 +1,8 @@
-let Assignment = require('../models/assignment.server.model')
+let assignmentRouter = require('express').Router()
 
-exports.edit = (req, res) => {
+let Assignment = require('../models/assignment.model')
+
+assignmentRouter.post('/edit', (req, res) => {
 	Assignment.update(req.body.filter, req.body.query, (err, result) => {
 		if (err) {
 			res.send(err.message)
@@ -8,26 +10,29 @@ exports.edit = (req, res) => {
 			res.send(result)
 		}
 	})
-}
+})
 
-exports.find = (req, res) => {
+assignmentRouter.get('/find', (req, res) => {
 	Assignment.find({}, (err, assignments) => {
 		if (err) {
 			res.send(err.message)
 		} else {
 			res.send(assignments.sort((assignment1, assignment2) => {
-				if (assignment1.dueDate > assignment2.dueDate)
+				if (assignment1.dueDate > assignment2.dueDate) {
 					return 1;
-				else if (assignment1.dueDate < assignment2.dueDate)
+				}
+				else if (assignment1.dueDate < assignment2.dueDate) {
 					return -1;
-				else
-				 return 0;
+				}
+				else {
+					return 0;
+				}
 			}))
 		}
 	})
-}
+})
 
-exports.remove = (req, res) => {
+assignmentRouter.post('/remove', (req, res) => {
 	Assignment.remove({_id: req.body.id}, (err, result) => {
 		if (err) {
 			res.send(err.message)
@@ -35,9 +40,9 @@ exports.remove = (req, res) => {
 			res.send(result)
 		}
 	})
-}
+})
 
-exports.save = (req, res) => {
+assignmentRouter.post('/save', (req, res) => {
 	let entry = new Assignment(req.body)
 	entry.save((err, result) => {
 		if (err) {
@@ -46,4 +51,6 @@ exports.save = (req, res) => {
 			res.send(result)
 		}
 	})
-}
+})
+
+module.exports = assignmentRouter
