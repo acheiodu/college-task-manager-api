@@ -19,14 +19,14 @@ router.post('/login', (req, res) => {
 	User.findOne({email: userData.email})
 	.then((user) => {
 		if (!user) {
-			return res.status(401).send({message: 'Invalid email or password'})
+			return res.status(401).send({message: 'Invalid email.'})
 		}
 		bcrypt.compare(userData.password, user.password, (err, isMatch) => {
 			if (err) {
-				return res.status(500).send({message: err.message})
+				return res.status(500).send({message: 'Unknown error.'})
 			}
 			if (!isMatch) {
-				return res.status(401).send({message: 'Invalid email or password'})
+				return res.status(401).send({message: 'Invalid password.'})
 			}
 			let payload = {subject: user._id}
 			let token = jwt.encode(payload, 'hYn93eAF0A8GTyrUE0LeW4luPf2drJUlA9OLlB3k8LJbKaM7VqlJ9l5ph84R1xA')
@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
 		})
 	})
 	.catch((err) => {
-		res.status(500).send({message: err.message})
+		res.status(500).send({message: 'Unknown error.'})
 	})
 })
 
