@@ -23,6 +23,9 @@ router.post('/login', (req, res) => {
 		}
 		bcrypt.compare(userData.password, user.password, (err, isMatch) => {
 			if (err) {
+				return res.status(500).send({message: err.message})
+			}
+			if (!isMatch) {
 				return res.status(401).send({message: 'Invalid email or password'})
 			}
 			let payload = {subject: user._id}
