@@ -13,7 +13,7 @@ userRouter.post('/edit', (req, res) => {
 	})
 })
 
-userRouter.post('/find', (req, res) => {
+userRouter.get('/find', (req, res) => {
 	User.find({}, '-password -__v', (err, users) => {
 		if (err) {
 			return res.send(err.message)

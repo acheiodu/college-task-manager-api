@@ -13,7 +13,7 @@ assignmentRouter.post('/edit', (req, res) => {
 })
 
 assignmentRouter.get('/find', (req, res) => {
-	Assignment.find({}, (err, assignments) => {
+	Assignment.find({author: req.userId}, (err, assignments) => {
 		if (err) {
 			res.send(err.message)
 		} else {

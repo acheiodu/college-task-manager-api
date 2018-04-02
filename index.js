@@ -8,7 +8,7 @@ let auth = require('./auth')
 
 mongoose.connect('mongodb://user:1234@ds151963.mlab.com:51963/mongohost', {useMongoClient: true}, (err) => {
   if (err) {
-    console.log(err)
+    console.log(`MongoError: ${err.message}`)
   }
 });
 mongoose.Promise = Promise;
@@ -25,9 +25,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/auth', auth.router)
-
 app.use('/assignment', auth.checkToken, assignmentRouter)
-
 app.use('/user', auth.checkToken, userRouter)
 
 let server = app.listen(process.env.PORT || 3000, () => console.log(`Serving on port ${server.address().port}...`))
