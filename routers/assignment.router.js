@@ -44,6 +44,7 @@ assignmentRouter.post('/remove', (req, res) => {
 
 assignmentRouter.post('/save', (req, res) => {
 	let entry = new Assignment(req.body)
+	entry.author = req.userId
 	entry.save((err, result) => {
 		if (err) {
 			res.send(err)
